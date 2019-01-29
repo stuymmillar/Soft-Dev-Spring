@@ -1,0 +1,5 @@
+<html>
+  <canvas height="600" width="600" id="slate">
+    update browser
+  </canvas>
+ </html>
