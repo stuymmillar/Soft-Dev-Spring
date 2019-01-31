@@ -1,7 +1,12 @@
+//Max Millar
+//SoftDev2 pd06
+//K#00 -- I See a Red Door...
+//2019-01-30
+
 var c = document.getElementById("slate");
 var ctx = c.getContext("2d");
-var clear = document.getElementById("clear");
-var change = document.getElementById("switch");
+var cleare = document.getElementById("clear");
+var changee = document.getElementById("switch");
 var state = 1;
 
 var draw = function(e) {
@@ -11,7 +16,9 @@ var draw = function(e) {
     ctx.fillRect(x,y,5,5);
   }
   else {
-    ctx.ellipse(x,y,10,10);
+    ctx.beginPath();
+    ctx.ellipse(x,y,2.5,2.5,0,0, 2 * Math.PI);
+    ctx.fill();
   }
 };
 
@@ -20,9 +27,10 @@ var clear = function(e) {
 };
 
 var change = function(e) {
+  console.log(state)
   state = (state + 1) % 2
 };
 
+cleare.addEventListener('click', clear);
+changee.addEventListener('click', change);
 c.addEventListener('click', draw);
-clear.addEventListener('click', clear);
-change.addEventListener('click', change);
