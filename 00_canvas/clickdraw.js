@@ -8,18 +8,21 @@ var ctx = c.getContext("2d");
 var cleare = document.getElementById("clear");
 var changee = document.getElementById("switch");
 var state = 1;
+var hasDrawing = 0;
 
 var draw = function(e) {
-  var x = e.layerX;
-  var y = e.layerY;
+  e.preventDefault();
+  var x = e.offsetX;
+  var y = e.offsetY;
   if (state == 0) {
-    ctx.fillRect(x,y,5,5);
+    ctx.fillRect(x,y,20,20);
   }
   else {
     ctx.beginPath();
-    ctx.ellipse(x,y,2.5,2.5,0,0, 2 * Math.PI);
+    ctx.ellipse(x,y,10,10,0,0, 2 * Math.PI);
     ctx.fill();
   }
+  hasDrawing = 1;
 };
 
 var clear = function(e) {
@@ -27,7 +30,6 @@ var clear = function(e) {
 };
 
 var change = function(e) {
-  console.log(state)
   state = (state + 1) % 2
 };
 
