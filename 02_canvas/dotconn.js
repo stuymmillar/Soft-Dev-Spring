@@ -1,7 +1,7 @@
-//Max Millar
+//preventFailure - Max Millar and Tim Marder
 //SoftDev2 pd06
-//K#00 -- I See a Red Door...
-//2019-01-30
+//K#02 -- Connecting the Dots
+//2019-02-01
 
 var c = document.getElementById("playground");
 var ctx = c.getContext("2d");
@@ -21,17 +21,17 @@ var draw = function(e) {
     ctx.lineTo(x,y);
     ctx.stroke();
     ctx.fill();
+    ctx.beginPath();
+    ctx.fillStyle = "#FF0000"
+    ctx.ellipse(lastx,lasty,10,10,0,0, 2 * Math.PI);
+    ctx.fill();
   }
-  lastx = x
-  lasty = y
   ctx.beginPath();
   ctx.fillStyle = "#FF0000"
   ctx.ellipse(x,y,10,10,0,0, 2 * Math.PI);
   ctx.fill();
-  ctx.beginPath();
-  ctx.fillStyle = "#FF0000"
-  ctx.ellipse(lastx,lasty,10,10,0,0, 2 * Math.PI);
-  ctx.fill();
+  lastx = x
+  lasty = y
 };
 
 var clear = function(e) {
