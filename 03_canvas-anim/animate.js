@@ -18,6 +18,7 @@ var clear = function () {
 
 var drawDot = function (id) {
   // ...
+  window.cancelAnimationFrame(requestID)
   if (radius == max || radius == min){
     state = !(state)
   }
