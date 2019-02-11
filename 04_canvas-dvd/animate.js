@@ -20,8 +20,6 @@ var clear = function () {
 var drawDot = function (id) {
   // ...
   window.cancelAnimationFrame(requestID)
-  x = 300
-  y = 300
   if (radius == 1 || radius == (c.width / 2)){
     growing = !(growing)
   }
@@ -81,9 +79,14 @@ var dvd = function (id) {
 
 }
 
+
 var dotButton = document.getElementById("circle");
 dotButton.addEventListener('click', drawDot);
 var stopButton = document.getElementById("stop");
 stopButton.addEventListener('click', stopIt);
 var dvdButton = document.getElementById("dvd");
-dvdButton.addEventListener('click', dvd);
+dvdButton.addEventListener('click', function (e) {
+  x = Math.floor(Math.random() * (c.width-50))
+  y = Math.floor(Math.random() * (c.height-100))
+  dvd()
+});
