@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title> MONGOSITE </title>
+  </head>
+  <form action="/data" type="POST">
+    query:
+    <input type="text" name="query">
+    <br>
+    ip:
+    <input type="text" name="ip">
+    <input type="submit">
+    </form>
+  </html>
