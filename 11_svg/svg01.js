@@ -7,6 +7,9 @@ var v = document.getElementById("vimage");
 var cleare = document.getElementById("but_clear");
 var mover = document.getElementById("but_move");
 var question = document.getElementById("but_?");
+var requestID;
+var node;
+var rainbow = false;
 
 var draw = function(e) {
   console.log(e);
@@ -16,17 +19,16 @@ var draw = function(e) {
 
   var in_circle = false;
   var circle_node = null;
-  console.log(v);
-  v.childNodes.forEach(function(node){
+  v.childNodes.forEach(function(jnode){
 	   //console.log(node);
      try{
-       if ((Math.sqrt(Math.pow((node.cx.baseVal.value - x),2) + Math.pow((node.cy.baseVal.value - y),2))) <= 25){
+       if ((Math.sqrt(Math.pow((jnode.cx.baseVal.value - x),2) + Math.pow((jnode.cy.baseVal.value - y),2))) <= 25){
          in_circle = true;
-        circle_node = node;
+        circle_node = jnode;
        }
      }
      catch(err){
-       console.log('first');
+       //console.log('first');
      }
   });
 
@@ -47,6 +49,8 @@ var draw = function(e) {
       c.setAttribute("cx", x);
       c.setAttribute("cy", y);
       c.setAttribute("r", 25);
+      c.setAttribute('xdir', 0);
+      c.setAttribute('ydir', 0);
       c.setAttribute("fill", "purple");
       v.appendChild(c);
   }
@@ -56,45 +60,70 @@ var clear = function(e) {
   while (v.lastChild) {
     v.removeChild(v.lastChild);
   }
+  window.cancelAnimationFrame(requestID)
+  rainbow = false;
 };
 
 var move = function(e) {
-    v.childNodes.forEach(function(node){
-	node.setAttribute('xdir' = true);
-	node.setAttribute('ydir' = true);
-	window.cancelAnimationFrame(requestID)
-	if ((node.cx) == 0 || (node.cx + 25) == 500) {
-	    node.setAttribute(!(node.xdir));
-	}
-	if ((node.cy) == 0 || (node.cy + 25) == 500){
-	    node.setAttribute(!(node.xdir));
-	}
-	if (node.ydir){
-	    if (node.xdir){
-		x += 1;
-		y += 1;
-	    }
-	    else {
-		x -= 1;
-		y += 1;
-	    }
-	}
-	else {
-	    if (xdir){
-		x += 1;
-		y -= 1;
-	    }
-	    else {
-		x -= 1;
-		y -= 1;
-	    }
-	}
-	requestID = window.requestAnimationFrame(move);
-    });
+  window.cancelAnimationFrame(requestID)
+  v.childNodes.forEach(function(node){
+    try{
+        if (rainbow){
+          node.setAttribute('fill', getRandomColor());
+        }
+      	if ((node.cx.baseVal.value - 25) <= 0) {
+      	    node.setAttribute('xdir', (node.getAttribute('xdir') + 1));
+      	}
+        else if ((node.cx.baseVal.value + 25) >= 500){
+          node.setAttribute('xdir', (node.getAttribute('xdir') - 1));
+        }
+      	if ((node.cy.baseVal.value - 25) <= 0 ) {
+      	    node.setAttribute('ydir', (node.getAttribute('ydir') + 1));
+      	}
+        else if ((node.cy.baseVal.value + 25) >= 500){
+          node.setAttribute('ydir', (node.getAttribute('ydir') - 1));
+        }
+      	if (node.getAttribute('ydir') == 1){
+      	    if (node.getAttribute('xdir') == 1){
+      		node.setAttribute('cx', (node.cx.baseVal.value + 1));
+      		node.setAttribute('cy', (node.cy.baseVal.value + 1));
+      	    }
+      	    else {
+      		node.setAttribute('cx', (node.cx.baseVal.value - 1));
+      		node.setAttribute('cy', (node.cy.baseVal.value + 1));
+      	    }
+      	}
+    	else {
+    	    if (node.getAttribute('xdir') == 1){
+    		node.setAttribute('cx', (node.cx.baseVal.value + 1));
+    		node.setAttribute('cy', (node.cy.baseVal.value - 1));
+    	    }
+    	    else {
+    		node.setAttribute('cx', (node.cx.baseVal.value - 1));
+    		node.setAttribute('cy', (node.cy.baseVal.value - 1));
+    	    }
+    	}
+    }
+  catch(err){
+    //console.log('first');
+    }
+
+  });
+  requestID = window.requestAnimationFrame(move);
 };
 
+var getRandomColor = function (e) {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
 cleare.addEventListener('click', clear);
 mover.addEventListener('click', move);
-question.addEventListener('click', question);
+question.addEventListener('click', function(e){
+  rainbow = !(rainbow);
+});
 v.addEventListener('click', draw);
