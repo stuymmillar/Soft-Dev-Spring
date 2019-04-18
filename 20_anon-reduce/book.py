@@ -2,12 +2,13 @@ from functools import reduce
 import os
 import re
 
-with open('moby.txt','r') as f:
+enc = 'utf-8'
+with open('moby.txt','r', encoding=enc) as f:
     word = f.read()
 words = [x for x in re.split('[ \r\n]', word) if x != '']
 
 
-print(words)
+#print(words)
 
 def wordFreq(w):
     return reduce((lambda x,y : x + y), [1 for x in words if x == w])
@@ -19,3 +20,17 @@ def wordsFreq(w):
     return reduce((lambda x,y : x + y), [1 for x in [x for x in range(len(words)) if words[x] == ws[0]] if words[x:x + len(ws)] == ws])
 
 print(wordsFreq("Captain Ahab"))
+
+
+
+def mostFreq():
+    w = ''
+    n = 0
+    for x in list(set(words)):
+        n2 = wordFreq(x)
+        if n2 > n:
+            n = n2
+            w = x
+    return w
+
+print(mostFreq())

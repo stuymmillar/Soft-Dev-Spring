@@ -363,18 +363,6 @@ was compared with a public domain hard copy version of the text.
   A.S. _Walw-ian_, to roll, to wallow.” —_Richardson’s Dictionary._
 
 
-  חו,                 _Hebrew_.
-  ϰητος,              _Greek_.
-  CETUS,              _Latin_.
-  WHŒL,               _Anglo-Saxon_.
-  HVALT,              _Danish_.
-  WAL,                _Dutch_.
-  HWAL,               _Swedish_.
-  WHALE,              _Icelandic_.
-  WHALE,              _English_.
-  BALLENA,            _Spanish_.
-  PEKEE-NUEE-NUEE,    _Fegee_.
-  PEHEE-NUEE-NUEE,    _Erromangoan_.
 
 
 
@@ -22039,7 +22027,7 @@ works.  See paragraph 1.E below.
 1.C.  The Project Gutenberg Literary Archive Foundation (“the
 Foundation” or PGLAF), owns a compilation copyright in the collection
 of Project Gutenberg-tm electronic works.  Nearly all the individual
-works in the collection are in the public domain in the United States. 
+works in the collection are in the public domain in the United States.
 If an individual work is in the public domain in the United States and
 you are located in the United States, we do not claim a right to
 prevent you from copying, distributing, performing, displaying or
@@ -22325,9 +22313,3 @@ This Web site includes information about Project Gutenberg-tm,
 including how to make donations to the Project Gutenberg Literary
 Archive Foundation, how to help produce our new eBooks, and how to
 subscribe to our email newsletter to hear about new eBooks.
-
-
-
-
-
-
